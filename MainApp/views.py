@@ -30,6 +30,6 @@ def single_snippet_page(request, id):
         raise Http404
     context = {
         'pagename': 'Страница сниппета',
-        "snippets": snippet
+        "snippet": snippet
     }
     return render(request, 'pages/snippet_page.html', context)
