@@ -26,7 +26,8 @@ def single_snippet_page(request, id):
         raise Http404
     context = {
         'pagename': 'Страница сниппета',
-        "snippet": snippet
+        "snippet": snippet,
+        "type": "view"
     }
     return render(request, 'pages/snippet_page.html', context)
 
@@ -47,3 +48,28 @@ def add_snippet_page(request):
         return render(request, 'add_snippet.html', {'form': form})
 
 
+def snippet_delete(request, id):
+    snippet = Snippet.objects.get(id=id)
+    snippet.delete()
+    return redirect("snippets-list")
+
+
+def snippet_edit(request, id):
+    try:
+        snippet = Snippet.objects.get(id=id)
+    except ObjectDoesNotExist:
+        raise Http404
+    if request.method == "GET":
+        context = {
+            'pagename': 'Редактировать сниппет',
+            "snippet": snippet,
+            "type": 'edit'
+        }
+        return render(request, 'pages/snippet_page.html', context)
+
+    if request.method == "POST":
+        form_data = request.POST
+        snippet.name = form_data["name"]
+        snippet.creation_date = form_data["creation_date"]
+        snippet.code = form_data["code"]
+        snippet.save()
