@@ -88,8 +88,11 @@ def login_page(request):
         if user is not None:
             auth.login(request, user)
         else:
-            # Return error message
-            pass
+            context = {
+                'pagename': 'PythonBin',
+                'errors': ['неверный логин или пароль']
+            }
+            return render(request, 'pages/index.html', context)
 
     return redirect('home')
 
