@@ -1,8 +1,8 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from MainApp.models import Snippet
 from django.core.exceptions import ObjectDoesNotExist
-from MainApp.forms import SnippetForm
+from MainApp.forms import SnippetForm, UserRegistrationForm
 from django.contrib import auth
 
 
@@ -63,7 +63,10 @@ def add_snippet_page(request):
 
 def snippet_delete(request, id):
     snippet = Snippet.objects.get(id=id)
-    snippet.delete()
+    if snippet.user == request.user:
+        snippet.delete()
+    else:
+        raise HttpResponseForbidden
     return redirect("snippets-list")
 
 
@@ -85,6 +88,8 @@ def snippet_edit(request, id):
         snippet.name = form_data["name"]
         snippet.creation_date = form_data["creation_date"]
         snippet.code = form_data["code"]
+        # print("public = ", form_data["public"])
+        # snippet.public = form_data["public"]
         snippet.save()
         return redirect('snippets-list')
 
@@ -109,3 +114,23 @@ def login_page(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+
+def register(request):
+    if request.method == 'GET':
+        form = UserRegistrationForm()
+        context = {
+            'pagename': 'Регистрация пользователя',
+            'form': form
+        }
+        return render(request, 'pages/register.html', context)
+    else:  # POST
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        context = {
+            'pagename': 'Регистрация пользователя',
+            'form': form
+        }
+        return render(request, 'pages/register.html', context)
