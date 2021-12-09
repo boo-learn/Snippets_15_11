@@ -77,6 +77,7 @@ def snippet_edit(request, id):
         snippet.creation_date = form_data["creation_date"]
         snippet.code = form_data["code"]
         snippet.save()
+        return redirect('snippets-list')
 
 
 def login_page(request):
