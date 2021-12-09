@@ -36,7 +36,7 @@
                             <a href="{% url 'snippet-edit' id=snippet.id %}"><i class="fas fa-edit"></i></a>
                         </td>
                         <td>{{ snippet.creation_date }}</td>
-                        <td> {{ snippet.user.username }}</td>
+                        <td> {{ snippet.user }}</td>
                     </tr>
                 {% endfor %}
 

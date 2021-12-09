@@ -20,6 +20,15 @@ def snippets_page(request):
     return render(request, 'pages/view_snippets.html', context)
 
 
+def snippets_my(request):
+    user_snippets = Snippet.objects.filter(user=request.user)
+    context = {
+        'pagename': 'Мои сниппеты',
+        "snippets": user_snippets
+    }
+    return render(request, 'pages/view_snippets.html', context)
+
+
 def single_snippet_page(request, id):
     try:
         snippet = Snippet.objects.get(id=id)
