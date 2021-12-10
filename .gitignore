@@ -3,4 +3,4 @@
 staticfiles/
 
 *.pyc
-db.*
+old_db.sqlite3

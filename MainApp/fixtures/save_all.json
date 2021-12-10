@@ -1,0 +1,97 @@
+[
+  {
+    "model": "MainApp.snippet",
+    "pk": 1,
+    "fields": {
+      "name": "New snippet-1",
+      "lang": "js",
+      "code": "                                                                        Snippet-1\r\n                    \r\n                    \r\n                    ",
+      "creation_date": "2021-12-10T00:00:00Z",
+      "rate": 1,
+      "user": 1,
+      "public": false
+    }
+  },
+  {
+    "model": "MainApp.snippet",
+    "pk": 2,
+    "fields": {
+      "name": "Admin snippet-1",
+      "lang": "py",
+      "code": "Admin snippet",
+      "creation_date": "2021-12-10T11:51:03.046Z",
+      "rate": 1,
+      "user": 2,
+      "public": true
+    }
+  },
+  {
+    "model": "MainApp.snippet",
+    "pk": 3,
+    "fields": {
+      "name": "Hello world!!!",
+      "lang": "py",
+      "code": "UnUser",
+      "creation_date": "2021-12-10T13:13:16.241Z",
+      "rate": 1,
+      "user": null,
+      "public": true
+    }
+  },
+  {
+    "model": "MainApp.comment",
+    "pk": 1,
+    "fields": {
+      "text": "new comment",
+      "creation_date": "2021-12-10T12:20:57.102Z",
+      "author": 2,
+      "snippet": 2
+    }
+  },
+  {
+    "model": "MainApp.comment",
+    "pk": 2,
+    "fields": {
+      "text": "еще один -)",
+      "creation_date": "2021-12-10T12:23:47.419Z",
+      "author": 2,
+      "snippet": 2
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$XVcCfRSymu2O$BiI0wUkfSxzC4+o97kXvfJ/wx2qDq/8UpUOKyPtNUKo=",
+      "last_login": "2021-12-10T07:12:36.631Z",
+      "is_superuser": false,
+      "username": "user",
+      "first_name": "",
+      "last_name": "",
+      "email": "user@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-12-10T07:12:28.932Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$gxK3mdcGhxLY$fLjAKtJzl3F1ZJSaeUJ3REjteSSAstUZZYBd7yrOrtE=",
+      "last_login": "2021-12-10T11:50:42.159Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@mail.ru",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-12-10T09:44:43.897Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
