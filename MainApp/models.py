@@ -18,3 +18,9 @@ class Snippet(models.Model):
                              blank=True, null=True)
     public = models.BooleanField(default=True)  # True - public / False - private
 
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return f"{self.name} ({self.lang}) user:{self.user}"
+
