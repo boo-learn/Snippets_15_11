@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block content %}
     <div class="row">
         <div class="col">
@@ -39,7 +40,7 @@
                             {% endif %}
                         </td>
                         <td>{{ snippet.creation_date }}</td>
-                        <td> {{ snippet.user }}</td>
+                        <td> {{ snippet.user|is_empty:"нет пользователя" }}</td>
                         <td> {{ snippet.public }}</td>
                     </tr>
                 {% endfor %}
